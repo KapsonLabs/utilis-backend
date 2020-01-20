@@ -20,4 +20,4 @@ class MemberView(APIView):
             serializer.save()
             data_dict = {"status":201, "data":serializer.data}
             return Response(data_dict, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response({"error": serializer.errors, "status":400}, status=status.HTTP_400_BAD_REQUEST)
